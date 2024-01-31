@@ -1,0 +1,25 @@
+# .github/workflows/main.yml
+
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use External Template
+        run: |
+          curl -o .github/workflows/main_workflow_template.yml https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
+
+      - name: Run the Job
+        run: |
+          echo "Running the job"
+
+      # Additional steps specific to your workflow can go here
