@@ -18,8 +18,10 @@ jobs:
         run: |
           curl -o .github/workflows/main.yml https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
 
-      - name: Run the Job
+      - name: Run the External Template
         run: |
-          echo "Running the job"
+          echo "Running the External Template"
+          # Now execute the fetched template
+          cat .github/workflows/main.yml
 
       # Additional steps specific to your workflow can go here
