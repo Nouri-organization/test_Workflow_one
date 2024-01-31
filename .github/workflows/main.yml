@@ -16,7 +16,7 @@ jobs:
 
       - name: Use External Template
         run: |
-          curl -o .github/workflows/main_workflow_template.yml https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
+          curl -o .github/workflows/main.yml https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
 
       - name: Run the Job
         run: |
