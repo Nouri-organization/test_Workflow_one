@@ -22,6 +22,6 @@ jobs:
         run: |
           echo "Running the External Template"
           # Now execute the fetched template
-          cat .github/workflows/main.yml
+          source .github/workflows/main.yml
 
       # Additional steps specific to your workflow can go here
