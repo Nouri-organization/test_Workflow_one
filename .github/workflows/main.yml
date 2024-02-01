@@ -8,7 +8,7 @@ on:
       - main
     paths:
       - requirements.txt
-      - /.github/workflows/testing/test_import_libraries.py
+      - .github/workflows/testing/test_import_libraries.py
 
 jobs:
   test:
