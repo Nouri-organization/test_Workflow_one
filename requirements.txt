@@ -2,3 +2,6 @@ pandas
 seaborn
 altair
 ipywidgets
+xgboost
+statsmodels
+ipympl
