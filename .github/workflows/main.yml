@@ -8,8 +8,8 @@ on:
       - main
     paths:
       - requirements.txt
-      - .github/workflows
-      
+      - .github/workflows/testing/test_import_libraries.py
+      - .github/workflows/
 
 jobs:
   test:
