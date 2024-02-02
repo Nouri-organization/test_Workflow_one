@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest] #ubuntu-22.04, ubuntu-20.04]
-        python-version: [3.9] #[3.9,3.11.3,3.12]
+        python-version: [3.11.3] #[3.9,3.11.3,3.12]
         # arch: [arm64, amd64]
 
 
@@ -37,5 +37,5 @@ jobs:
         #   GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         #   REPO: Nouri-organization/workflow_templates
         #   EVENT_TYPE: workflow_dispatch
-        #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2"}'
+        #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2", "param3": "value3"}'
     
