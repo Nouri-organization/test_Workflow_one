@@ -38,7 +38,22 @@ jobs:
           EVENT_TYPE: workflow_dispatch
         #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2", "param3": "value3"}'
         run: |
-         curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
+          content=$(curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml)
+          echo "$content" > external-template.yml
+          
+          # Trigger another workflow using the retrieved content
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            -H "Content-Type: application/json" \
+            -d '{"ref": "main", "inputs": {"external_template": "$content"}}' \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/test_template.yml/dispatches
+
+
+
+        
+        # run: |
+        #  curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
  #| bash
         
     
