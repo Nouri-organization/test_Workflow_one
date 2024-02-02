@@ -33,20 +33,21 @@ jobs:
 
       - name: Use External Template
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_B }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           REPO: Nouri-organization/workflow_templates
           EVENT_TYPE: workflow_dispatch
         #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2", "param3": "value3"}'
         run: |
           curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml -o external-template.yml
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.PAT_TOKEN_B }}" \
-            -H "Accept: application/vnd.github.everest-preview+json" \
+          
+          curl -L \
+            -X POST \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d '{"ref": "main", "inputs": {"external_template": "$(cat external-template.yml)"}}' \
+            -d '{"ref": "main", "inputs": {"external_template": "$(cat external-template.yml )"}}' \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/test_template.yml/dispatches
 
-
+         
 
         
         # run: |
