@@ -33,7 +33,8 @@ jobs:
 
       - name: Use External Template
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_TEMPLET }}
           REPO: Nouri-organization/workflow_templates
           EVENT_TYPE: workflow_dispatch
         #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2", "param3": "value3"}'
