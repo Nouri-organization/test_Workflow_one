@@ -44,7 +44,7 @@ jobs:
             -X POST \
             -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d '{"ref": "main", "inputs": {"external_template": "$(cat external-template.yml )"}}' \
+            -d '{"ref": "main", "inputs": {"external_template": "$(cat external-template.yml | jq -c . )"}}' \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/test_template.yml/dispatches
 
          
