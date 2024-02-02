@@ -38,21 +38,28 @@ jobs:
           EVENT_TYPE: workflow_dispatch
         #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2", "param3": "value3"}'
         run: |
-          curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml -o external-template.yml
+         content=$(curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml)
+         echo "$content" > external-template.yml
           
-          curl -L \
-            -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d '{"ref": "main", "inputs": {"external_template": "$(cat external-template.yml )"}}' \
-            https://api.github.com/repos/REPO/actions/workflows/test_template.yml/dispatches
-
-         
+         curl -X POST \
+           -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+           -H "Accept: application/vnd.github.everest-preview+json" \
+           -H "Content-Type: application/json" \
+           -d '{"ref": "main", "inputs": {"external_template": "$content"}}' \
+           https://api.github.com/repos/Nouri-organization/workflow_templates/actions/workflows/test_template.yml
 
         
         # run: |
         #  curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml
  #| bash
         
-    
+ # curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml -o external-template.yml
+
+# curl -L \
+#   -X POST \
+#   -H "Accept: application/vnd.github+json" \
+#   -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+#   -H "Content-Type: application/json" \
+#   -d '{"ref": "main", "inputs": {"external_template": "$(cat external-template.yml )"}}' \
+#   https://api.github.com/repos/REPO/actions/workflows/test_template.yml/dispatches
+   
