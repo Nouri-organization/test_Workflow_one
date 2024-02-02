@@ -3,13 +3,14 @@
 name: Main Workflow
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - requirements.txt
-      - .github/workflows/testing/test_import_libraries.py
-      - .github/workflows/main.yml
+ workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - requirements.txt
+  #     - .github/workflows/testing/test_import_libraries.py
+  #     - .github/workflows/main.yml
 
 jobs:
   test_template:
