@@ -35,7 +35,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
+      
+      - name: Install jq
+        run: |
+         sudo apt-get install jq 
+         
       - name: Use External Template
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
@@ -48,13 +52,11 @@ jobs:
          echo "$content"
          echo "$content" > external-template.yml 
          cat external-template.yml
-          
+         
          curl -X POST \
            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
            -H "Accept: application/vnd.github.everest-preview+json" \
            -H "Content-Type: application/json" \
            echo "JSON Payload:"
            -d '{"ref": "main", "inputs": {"external_template": "'"$(cat external-template.yml | jq -c -R .)"'"}}' \
-           https://api.github.com/repos/Nouri-organization/workflow_templates/actions/workflows/test_template.yml/dispatches 
-  #-d '{"ref": "main", "inputs": {"external_template": "'"$content"'"}}'
-  #-d "{\"ref\": \"main\", \"inputs\": {\"external_template\": \"$content\"}}" \         
+           https://api.github.com/repos/Nouri-organization/workflow_templates/actions/workflows/test_template.yml/dispatches       
