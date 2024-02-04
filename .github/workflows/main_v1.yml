@@ -1,6 +1,6 @@
 # .github/workflows/main.yml
 
-name: Main Workflow
+name: Main Workflow_V1
 
 on:
   push:

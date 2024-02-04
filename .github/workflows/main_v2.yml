@@ -1,6 +1,6 @@
 # .github/workflows/main.yml
 
-name: Main Workflow
+name: Main Workflow_v2
 
 on:
  workflow_dispatch:
