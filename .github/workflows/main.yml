@@ -57,5 +57,5 @@ jobs:
            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
            -H "Accept: application/vnd.github.everest-preview+json" \
            -H "Content-Type: application/json" \
-           -d "{\"ref\": \"main\", \"inputs\": {\"external_template\": \"$(cat external-template.yml | jq -c -R .)\"}}" \
+           -d "{\"ref\": \"main\", \"inputs\": {\"external_template\": \"$(cat external-template.yml | jq -c -R . | sed ':a;N;$!ba;s/\n/\\n/g')\"}}" \
            https://api.github.com/repos/Nouri-organization/workflow_templates/actions/workflows/test_template.yml/dispatches       
