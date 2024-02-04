@@ -4,6 +4,11 @@ name: Main Workflow
 
 on:
  workflow_dispatch:
+   inputs:
+      external_template:
+        description: 'Include external template'
+        required: false
+
   # push:
   #   branches:
   #     - main
