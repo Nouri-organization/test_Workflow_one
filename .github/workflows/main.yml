@@ -52,11 +52,10 @@ jobs:
          echo "$content"
          echo "$content" > external-template.yml 
          cat external-template.yml
-         
+         echo "JSON Payload:"
          curl -X POST \
            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
            -H "Accept: application/vnd.github.everest-preview+json" \
            -H "Content-Type: application/json" \
-           echo "JSON Payload:"
            -d '{"ref": "main", "inputs": {"external_template": "'"$(cat external-template.yml | jq -c -R .)"'"}}' \
            https://api.github.com/repos/Nouri-organization/workflow_templates/actions/workflows/test_template.yml/dispatches       
