@@ -44,6 +44,8 @@ jobs:
         #   CLIENT_PAYLOAD: '{"param1": "value1", "param2": "value2", "param3": "value3"}'
         run: |
          content=$(curl -sS https://raw.githubusercontent.com/Nouri-organization/workflow_templates/main/test_template.yml) 
+         echo "Content of test_template.yml:"
+         echo "$content"
          echo "$content" > external-template.yml 
           
          curl -X POST \
