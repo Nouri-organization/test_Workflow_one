@@ -52,7 +52,7 @@ jobs:
          echo "$content"
          echo "$content" > external-template.yml 
          cat external-template.yml
-         payload="{\"ref\": \"main\", \"inputs\": {\"external_template\": \"$(jq -Rs . < external-template.yml)\"}}"
+         payload="{\"ref\": \"main\", \"inputs\": {\"external_template\": \"$(sed ':a;N;$!ba;s/\n/\\n/g' external-template.yml)\"}}"
          echo "$payload"
          curl -X POST \
            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
